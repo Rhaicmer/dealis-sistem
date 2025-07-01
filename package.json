@@ -1,0 +1,22 @@
+{
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"npm:electron-dev\"",
+    "electron-dev": "wait-on http://localhost:5173 && electron .",
+    "build": "vite build",
+    "electron-build": "npm run build && electron ."
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.1",
+    "concurrently": "^9.1.2",
+    "electron": "^36.3.2",
+    "vite": "^6.3.5",
+    "wait-on": "^8.0.3"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.1",
+    "electron-updater": "^6.6.2"
+  }
+}
