@@ -1,22 +1,58 @@
 {
+  "name": "alva-app",
+  "version": "1.0.3",
   "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"npm:electron-dev\"",
     "electron-dev": "wait-on http://localhost:5173 && electron .",
     "build": "vite build",
-    "electron-build": "npm run build && electron ."
+    "electron-build": "npm run build && electron-builder",
+    "dist": "npm run electron-build"
+  },
+  "build": {
+    "appId": "com.seunome.alvaapp",
+    "productName": "AlvaApp",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "public/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Rhaicmer",
+        "repo": "dealis-sistem"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "assets/icon.ico"
+    }
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.1",
     "concurrently": "^9.1.2",
     "electron": "^36.3.2",
+    "electron-builder": "^26.0.12",
     "vite": "^6.3.5",
     "wait-on": "^8.0.3"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^7.1.1",
-    "electron-updater": "^6.6.2"
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "electron-log": "^5.4.1",
+    "electron-updater": "^6.6.2",
+    "firebase": "^12.0.0",
+    "react-router-dom": "^7.7.0"
   }
 }

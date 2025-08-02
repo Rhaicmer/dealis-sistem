@@ -1,24 +1,37 @@
 import { useState } from 'react';
 import { TextField, Button, Box, Typography, Paper } from '@mui/material';
 import VideoBg from '../../Components/VideoBG/VideoBg.jsx';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../Services/firebase.js';
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [erro, setErro] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
 
-    // Validação simples
     if (!email || !senha) {
       alert('Preencha todos os campos!');
       return;
     }
 
-    // Aqui você pode colocar sua lógica de autenticação
-    console.log('Login:', email, senha);
-    alert('Login realizado (simulação)');
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, senha);
+      navigate('/home');
+      console.log('Login realizado!');
+      alert('Login realizado (simulação)', email, senha);
+    } catch (err) {
+      setErro(err.message);
+      alert('Email senha incorretos', email, senha);
+    }
   };
+
+  
 
   return (
     <div style={{ position: 'relative', height: '100vh' }}>

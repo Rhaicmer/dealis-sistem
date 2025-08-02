@@ -1,0 +1,14 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;  /* empilha verticalmente */
+  align-items: center;     /* centraliza horizontalmente */
+  justify-content: flex-start; /* alinha os itens do topo para baixo */
+  height: 100vh;           /* altura total da tela */
+  gap: 20px;               /* espaçamento entre as divs */
+  background-color: #f0f0f0;
+}

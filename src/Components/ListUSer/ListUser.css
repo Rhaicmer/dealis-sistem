@@ -1,0 +1,14 @@
+.Card{
+    width: 800px;
+    height: 180px;
+    background-color: aqua;
+    margin: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    padding-inline-start: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
